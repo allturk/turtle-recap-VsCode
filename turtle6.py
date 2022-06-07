@@ -9,6 +9,10 @@ timmy.speed("fastest")
 timmy.up()
 timmy.goto(x=-100,y=100)
 timmy.down()
+def move_turtle(x,y):
+    timmy.up()
+    timmy.goto(x,y)
+    timmy.down()
 def random_pen_color():
     r=randint(0,255)
     g=randint(0,255)
@@ -17,22 +21,20 @@ def random_pen_color():
     return randomColor
 angle=10
 
-for _ in range(360//angle):
-    timmy.right(angle)
-    timmy.color(random_pen_color())
-    timmy.circle(radius=70)
+def draw_spirograph(angle):
+    for _ in range(360//angle):
+        timmy.right(angle)
+        timmy.color(random_pen_color())
+        timmy.circle(radius=70)
+
+move_turtle(-100, 100)
+draw_spirograph(angle)
 
 # ----------- or ---------------
 
-timmy.up()
-timmy.goto(x=100,y=-100)
-timmy.down()
+move_turtle(100, -100)
 
-for _ in range(360//angle):
-    timmy.color(random_pen_color())
-    current_heading=timmy.heading()
-    timmy.setheading(current_heading+angle)
-    timmy.circle(radius=70)
+draw_spirograph(angle)
 
 
 screen=t.Screen()
