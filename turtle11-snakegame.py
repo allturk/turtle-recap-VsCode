@@ -1,7 +1,8 @@
-from turtle import Turtle,Screen
+from turtle import Screen
 import tkinter #To adding turtle screen window an icon
 import time
 from snake import Snake
+from food import Food
 
 screen=Screen()
 screen.setup(600,600)
@@ -21,6 +22,14 @@ screen.listen()
 game_is_on=True
 
 snake=Snake()
+snake_food=Food()
+print("random_x", snake_food.random_x)
+
+
+def find_distance():
+    head_distance=snake.head.distance(snake_food)
+    return head_distance
+
 
 while game_is_on:
     screen.update()
@@ -29,10 +38,15 @@ while game_is_on:
     head_position=snake.head.position()
     if head_position[0]>=295 or head_position[0]<=-295 or head_position[1]>=295 or head_position[1]<=-295:
         game_is_on=False
-    screen.onkey(fun=snake.turn_left, key="Left")
+    if find_distance()<=15:
+        snake_food.reset()
+        snake_food.new_food()
+        snake.add_segment()
+   
+    screen.onkey(fun=snake.go_left, key="Left")
     screen.onkey(fun=snake.go_up, key="Up")
     screen.onkey(fun=snake.go_down, key="Down")
-    screen.onkey(fun=snake.turn_right, key="Right")
+    screen.onkey(fun=snake.go_right, key="Right")
 
 
 
