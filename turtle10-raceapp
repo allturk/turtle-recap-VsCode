@@ -41,7 +41,7 @@ while is_race_on:
         if turtle_color[0]==user_bet:
             print(f"{turtle_color[0]} win the race. You WIN the BET")
         else:
-            print(f"{turtle_color[0]} win the race.  You lose!")
+            print(f"{turtle_color[0]} win the race.  You lost!")
 
 #or
 # while is_race_on:
@@ -52,11 +52,11 @@ while is_race_on:
 #         turtle.forward(moving_dist)
 #         if x_cor>=232:
 #             is_race_on=False
-#             turtle_color=turtle.color()
+#             turtle_color=turtle.pencolor()
 #             if turtle_color[0]==user_bet:
-#                 print(f"{turtle_color[0]} turtle win the race. You WIN the BET")
+#                 print(f"{turtle_color} turtle win the race. You WIN the BET")
 #             else:
-#                 print(f"{turtle_color[0]} turtle win the race.  You lose!")
-# tim.shape("turtle")
+#                 print(f"{turtle_color} turtle win the race.  You lost!")
+# # tim.shape("turtle")
 
 screen.exitonclick()
