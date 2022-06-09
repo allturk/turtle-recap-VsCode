@@ -24,7 +24,7 @@ class Snake(Turtle):
     def create_snakesegment(self):
         self.new_segment=Turtle()
         self.new_segment.direction="go"
-        self.new_segment.speed(0)
+        self.new_segment.speed(3)
         self.new_segment.shape("square")
         self.new_segment.color("white")
         self.new_segment.penup()
@@ -66,5 +66,15 @@ class Snake(Turtle):
         if self.head.direction!="up":
             self.head.setheading(270)
 
+    #detect head collison with the tail but they are not in opposite directions
+    def head_collision(self,snake_segments):
+        for segment in snake_segments[1:]:
+            if self.head.distance(segment)<14  :
+                    return True
+   
 
+
+
+    
+       
     

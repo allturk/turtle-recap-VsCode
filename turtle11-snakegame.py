@@ -26,11 +26,11 @@ game_is_on=True
 snake=Snake()
 snake_food=Food()
 # print("random_x", snake_food.random_x)
-
+sleep_ratio=0.1
 
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(sleep_ratio)
     snake.move()
     head_position=snake.head.position()
     if head_position[0]>=295 or head_position[0]<=-295 or head_position[1]>=295 or head_position[1]<=-295:
@@ -41,13 +41,13 @@ while game_is_on:
         snake_food.new_food()
         snake.add_segment()
         scoreB.update_score(scoreB.score+1)
+        sleep_ratio*=0.95
     #detect collision with the tail
-    for segment in snake.snakes:
-        if segment==snake.head:
-            pass
-        elif snake.find_distance(segment)<15:
-            game_is_on=False
-            scoreB.game_over()
+    # for segment in snake.snakes[1:]:
+    #     if snake.find_distance(segment)<20:
+    if snake.head_collision(snake.snakes):
+        game_is_on=False
+        scoreB.game_over()
    
     screen.onkey(fun=snake.go_left, key="Left")
     screen.onkey(fun=snake.go_up, key="Up")
