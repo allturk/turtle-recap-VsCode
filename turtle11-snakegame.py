@@ -35,11 +35,19 @@ while game_is_on:
     head_position=snake.head.position()
     if head_position[0]>=295 or head_position[0]<=-295 or head_position[1]>=295 or head_position[1]<=-295:
         game_is_on=False
+        scoreB.game_over()
     if snake.find_distance(snake_food)<=15:
         snake_food.reset()
         snake_food.new_food()
         snake.add_segment()
         scoreB.update_score(scoreB.score+1)
+    #detect collision with the tail
+    for segment in snake.snakes:
+        if segment==snake.head:
+            pass
+        elif snake.find_distance(segment)<15:
+            game_is_on=False
+            scoreB.game_over()
    
     screen.onkey(fun=snake.go_left, key="Left")
     screen.onkey(fun=snake.go_up, key="Up")

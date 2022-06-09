@@ -49,8 +49,8 @@ class Snake(Turtle):
             self.snakes[seg_num].goto(x,y)
         self.head.forward(20)
             
-    def find_distance(self,snake_food):
-        head_distance=self.head.distance(snake_food)
+    def find_distance(self,element):
+        head_distance=self.head.distance(element)
         return head_distance
 
     def go_left(self):
