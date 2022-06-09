@@ -36,7 +36,7 @@ class Snake(Turtle):
     def add_segment(self):
         x_cor=self.snakes[-1].xcor()
         y_cor=self.snakes[-1].ycor()
-        print(x_cor," ",y_cor)
+        # print(x_cor," ",y_cor)
         self.create_snakesegment()
         self.new_segment.goto(x_cor,y_cor)
         self.snakes.append(self.new_segment)
@@ -49,6 +49,10 @@ class Snake(Turtle):
             self.snakes[seg_num].goto(x,y)
         self.head.forward(20)
             
+    def find_distance(self,snake_food):
+        head_distance=self.head.distance(snake_food)
+        return head_distance
+
     def go_left(self):
         if self.head.direction!="right":
             self.head.setheading(180)
